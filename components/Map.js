@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Button, TextInput } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import SearchInput from './SearchInput'
 import mockdata from '../mock/mockdata.json'
@@ -8,7 +8,8 @@ import mockdata from '../mock/mockdata.json'
 export default class Map extends Component {
   static navigationOptions = {
     title: 'Results',
-  };
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -30,10 +31,22 @@ export default class Map extends Component {
     })
   }
 
+  submitSearch () {
+    console.log('pressed')
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        <SearchInput />
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={styles.searchInput}
+            underlineColorAndroid='transparent'
+            autoCorrect={false} />
+          <Button
+            title='Search'
+            onPress={() => this.submitSearch()} />
+        </View>
         <MapView
           style={styles.container}
           initialRegion={{
@@ -71,5 +84,14 @@ const styles = StyleSheet.create({
   text: {
     color: '#FFF',
     fontWeight: 'bold'
+  },
+  searchContainer: {
+    height: 80,
+    backgroundColor: '#fff'
+  },
+  searchInput: {
+    color: '#000',
+    height: 40,
+    paddingHorizontal: 10
   }
 })
