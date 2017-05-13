@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, Button, TextInput } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
-import SearchInput from './SearchInput'
-import mockdata from '../mock/mockdata.json'
+import ResultsList from './ResultsList'
+import VenueDetails from './VenueDetails'
 
+import mockdata from '../mock/mockdata.json'
 
 export default class Map extends Component {
   static navigationOptions = {
@@ -13,40 +14,30 @@ export default class Map extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      markers: []
+      showList: true,
+      showVenueDetails: false,
+      selectedVenue: null
     }
 
-    this.handlePress = this.handlePress.bind(this)
+    this.setSelectedVenue = this.setSelectedVenue.bind(this)
   }
 
-  handlePress (e) {
+  componentWillMount() {
+    this.setState({ venues: mockdata.results })
+  }
+
+  setSelectedVenue(venue) {
+    console.log('open venue')
     this.setState({
-      markers: [
-        ...this.state.markers,
-        {
-          coordinate: e.nativeEvent.coordinate,
-          label: 'beer'
-        }
-      ]
+      showList: false,
+      showVenueDetails: true,
+      selectedVenue: venue
     })
-  }
-
-  submitSearch () {
-    console.log('pressed')
   }
 
   render () {
     return (
       <View style={styles.container}>
-        <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            underlineColorAndroid='transparent'
-            autoCorrect={false} />
-          <Button
-            title='Search'
-            onPress={() => this.submitSearch()} />
-        </View>
         <MapView
           style={styles.container}
           initialRegion={{
@@ -57,16 +48,26 @@ export default class Map extends Component {
           }}
           onPress={this.handlePress}
         >
-          {this.state && this.state.markers.length > 0 ? this.state.markers.map((marker, i) => {
+          {this.state && this.state.venues.length > 0 ? this.state.venues.map((venue, i) => {
             return (
-              <Marker {...marker} key={i}>
-                <View style={styles.marker}>
-                  <Text style={styles.text}>{marker.label}</Text>
-                </View>
+              <Marker {...venue} key={i} onPress={() => this.setSelectedVenue(venue)}>
+                <View style={styles.marker} />
               </Marker>
             )
           }) : null }
         </MapView>
+        { this.state.venues.length > 0 && this.state.showList &&
+          <View style={styles.container}>
+            <ResultsList
+              setSelectedVenue={() => this.setSelectedVenue}
+              results={this.state.venues} />
+          </View>
+        }
+        { this.state.showVenueDetails &&
+          <View style={styles.container}>
+            <VenueDetails venue={this.state.selectedVenue} />
+          </View>
+        }
       </View>
     )
   }
@@ -78,20 +79,15 @@ const styles = StyleSheet.create({
   },
   marker: {
     backgroundColor: '#550bbc',
-    padding: 5,
-    borderRadius: 5
+    padding: 7,
+    borderRadius: 7
   },
   text: {
     color: '#FFF',
     fontWeight: 'bold'
   },
   searchContainer: {
-    height: 80,
-    backgroundColor: '#fff'
-  },
-  searchInput: {
-    color: '#000',
     height: 40,
-    paddingHorizontal: 10
+    backgroundColor: '#fff'
   }
 })
