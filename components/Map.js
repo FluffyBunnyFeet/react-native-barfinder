@@ -27,7 +27,6 @@ export default class Map extends Component {
   }
 
   setSelectedVenue(venue) {
-    console.log('open venue')
     this.setState({
       showList: false,
       showVenueDetails: true,
@@ -59,7 +58,7 @@ export default class Map extends Component {
         { this.state.venues.length > 0 && this.state.showList &&
           <View style={styles.container}>
             <ResultsList
-              setSelectedVenue={() => this.setSelectedVenue}
+              setSelectedVenue={this.setSelectedVenue}
               results={this.state.venues} />
           </View>
         }

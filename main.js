@@ -24,23 +24,23 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Begin Your Adventure</Text>
-        
+
         <View style={{flexDirection: 'row'}}>
-        
+
           <View style={styles.searchWrap}>
             <TextInput style={styles.search}
               placeholder="Search for beer, wine, or cocktail"
               placeholderTextColor="#f7f7f7"
-              onChange={() => console.log('changed')} 
+              onChange={() => console.log('changed')}
             />
           </View>
           <TouchableOpacity
-            onPress={() => navigate('Articles', { articles: [1, 2, 3] })}
+            onPress={() => navigate('Map')}
             style={{flex: 1, alignItems: 'center', padding: 5}}
           >
             <Text>Search</Text>
           </TouchableOpacity>
-        </View> 
+        </View>
       </View>
     );
   }

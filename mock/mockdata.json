@@ -49,15 +49,15 @@
       },
       "name": "Pabst Bar",
       "address": "85 MKE Street",
-      "travelTime": "",
-      "trendingNumber": "",
-      "tagLine": "",
+      "travelTime": "7 min",
+      "trendingNumber": "1",
+      "tagLine": "The Best Tagline",
       "image": "",
-      "followers": "",
+      "followers": "1",
       "testimonial": {
-        "name": "",
+        "name": "Pabst only customer",
         "profilePicture": "",
-        "comment": ""
+        "comment": "Never crowded!"
       }
     },
     {
@@ -67,8 +67,8 @@
       },
       "name": "Kansas Bar",
       "address": "95 Boomoos",
-      "travelTime": "",
-      "trendingNumber": "",
+      "travelTime": "1 min",
+      "trendingNumber": "9",
       "tagLine": "",
       "image": "",
       "followers": "",
@@ -85,8 +85,8 @@
       },
       "name": "Jimbob Jones'",
       "address": "123 East St",
-      "travelTime": "",
-      "trendingNumber": "",
+      "travelTime": "6 min",
+      "trendingNumber": "99",
       "tagLine": "",
       "image": "",
       "followers": "",
