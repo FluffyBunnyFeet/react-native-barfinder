@@ -17,9 +17,15 @@ import * as fonts from './styles/fonts'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Welcome',
-    searchString: ''
+    title: 'Welcome'
   };
+
+  constructor(props){
+    super(props)
+    this.state = {
+      searchString: ''
+    }
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -42,7 +48,10 @@ class HomeScreen extends React.Component {
             />
           </View>
           <TouchableOpacity
-            onPress={() => navigate('Articles', { searchString: this.state.searchString })}
+            onPress={() => {
+              console.log(this.state)
+              return navigate('Articles', { searchString: this.state.searchString })
+            }}
             style={{flex: 1, alignItems: 'center', padding: 5}}
           >
             <Image source={require('./Images/Search.png')} style={{ height: 30, width: 30, marginTop: -5}}/>
