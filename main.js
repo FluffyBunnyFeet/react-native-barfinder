@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   View,
+  Image,
   TouchableOpacity
 } from 'react-native'
 import { StackNavigator } from 'react-navigation'
@@ -17,28 +18,34 @@ import * as fonts from './styles/fonts'
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Welcome',
+    searchString: ''
   };
 
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <View style={{flexDirection: 'row', marginBottom: 15}}> 
+          <Image source={require('./Images/Beer.png')} style={styles.mainIcon}/>
+          <Image source={require('./Images/Wine.png')} style={styles.mainIcon}/>
+          <Image source={require('./Images/Martini.png')} style={styles.mainIcon}/>
+        </View>
+
         <Text style={styles.welcome}>Begin Your Adventure</Text>
-        
-        <View style={{flexDirection: 'row'}}>
-        
+
+        <View style={{flexDirection: 'row'}}>        
           <View style={styles.searchWrap}>
             <TextInput style={styles.search}
               placeholder="Search for beer, wine, or cocktail"
               placeholderTextColor="#f7f7f7"
-              onChange={() => console.log('changed')} 
+              onChange={(text) => this.setState({ searchString: text})} 
             />
           </View>
           <TouchableOpacity
-            onPress={() => navigate('Articles', { articles: [1, 2, 3] })}
+            onPress={() => navigate('Articles', { searchString: this.state.searchString })}
             style={{flex: 1, alignItems: 'center', padding: 5}}
           >
-            <Text>Search</Text>
+            <Image source={require('./Images/Search.png')} style={{ height: 30, width: 30, marginTop: -5}}/>
           </TouchableOpacity>
         </View> 
       </View>
@@ -55,6 +62,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.PRIMARY_PURPLE,
     padding: 20
+  },
+  mainIcon: {
+    height: 80,
+    width: 80
   },
   searchWrap: {
     height: 30,
