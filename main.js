@@ -56,7 +56,7 @@ class HomeScreen extends React.Component {
           >
             <Image source={require('./Images/Search.png')} style={{ height: 30, width: 30, marginTop: -5}}/>
           </TouchableOpacity>
-        </View> 
+        </View>
       </View>
     );
   }
