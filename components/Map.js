@@ -14,12 +14,11 @@ export default class Map extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      showList: true,
-      showVenueDetails: false,
       selectedVenue: null
     }
 
     this.setSelectedVenue = this.setSelectedVenue.bind(this)
+    this.closeDetails = this.closeDetails.bind(this)
   }
 
   componentWillMount() {
@@ -28,9 +27,13 @@ export default class Map extends Component {
 
   setSelectedVenue(venue) {
     this.setState({
-      showList: false,
-      showVenueDetails: true,
       selectedVenue: venue
+    })
+  }
+
+  closeDetails() {
+    this.setState({
+      selectedVenue: null
     })
   }
 
@@ -55,16 +58,18 @@ export default class Map extends Component {
             )
           }) : null }
         </MapView>
-        { this.state.venues.length > 0 && this.state.showList &&
+        { this.state.venues.length > 0 && !this.state.selectedVenue &&
           <View style={styles.container}>
             <ResultsList
               setSelectedVenue={this.setSelectedVenue}
               results={this.state.venues} />
           </View>
         }
-        { this.state.showVenueDetails &&
+        { this.state.selectedVenue &&
           <View style={styles.container}>
-            <VenueDetails venue={this.state.selectedVenue} />
+            <VenueDetails
+              venue={this.state.selectedVenue}
+              closeDetails={this.closeDetails} />
           </View>
         }
       </View>

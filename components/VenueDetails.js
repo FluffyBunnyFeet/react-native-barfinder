@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Button } from 'react-native';
 
 import * as colors from '../styles/colors';
 
-export default ({ venue }) => (
+export default ({ venue, closeDetails }) => (
   <View style={styles.mainContainer}>
     <View style={styles.headingContainer}>
       <View style={styles.headingRow}>
@@ -25,6 +25,9 @@ export default ({ venue }) => (
       </View>
     </View>
     <View style={styles.mockImage} />
+    <Button
+      title='Go Back'
+      onPress={closeDetails} />
   </View>
 );
 

@@ -23,19 +23,27 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <View style={{flexDirection: 'row', marginBottom: 15}}>
+          <Image source={require('./Images/Beer.png')} style={styles.mainIcon}/>
+          <Image source={require('./Images/Wine.png')} style={styles.mainIcon}/>
+          <Image source={require('./Images/Martini.png')} style={styles.mainIcon}/>
+        </View>
+
         <Text style={styles.welcome}>Begin Your Adventure</Text>
 
         <View style={{flexDirection: 'row'}}>
-
           <View style={styles.searchWrap}>
             <TextInput style={styles.search}
               placeholder="Search for beer, wine, or cocktail"
               placeholderTextColor="#f7f7f7"
-              onChange={() => console.log('changed')}
+              onChange={(text) => this.setState({ searchString: text})}
             />
           </View>
           <TouchableOpacity
-            onPress={() => navigate('Map')}
+            onPress={() => {
+              console.log(this.state)
+              return navigate('Map', { searchString: this.state.searchString })
+            }}
             style={{flex: 1, alignItems: 'center', padding: 5}}
           >
             <Text>Search</Text>
