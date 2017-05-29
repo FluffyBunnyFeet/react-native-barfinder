@@ -31,6 +31,7 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <View style={{flexDirection: 'row', marginBottom: 15}}>
           <Image source={require('./Images/Beer.png')} style={styles.mainIcon}/>
           <Image source={require('./Images/Wine.png')} style={styles.mainIcon}/>
           <Image source={require('./Images/Martini.png')} style={styles.mainIcon}/>
