@@ -55,7 +55,7 @@ class HomeScreen extends React.Component {
             }}
             style={{flex: 1, alignItems: 'center', padding: 5}}
           >
-            <Image source={require('./Images/Search.png')} style={{ height: 30, width: 30, marginTop: -5}}/>
+            <Image source={require('./assets/images/Search.png')} style={{ height: 30, width: 30, marginTop: -5}}/>
           </TouchableOpacity>
         </View>
       </View>
