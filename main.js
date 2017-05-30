@@ -51,7 +51,7 @@ class HomeScreen extends React.Component {
 
           <TouchableOpacity
             onPress={() => {
-              return navigate('MapScreen', { searchString: this.state.searchString })
+              return navigate('Map', { searchString: this.state.searchString })
             }}
             style={{flex: 1, alignItems: 'center', padding: 5}}
           >
