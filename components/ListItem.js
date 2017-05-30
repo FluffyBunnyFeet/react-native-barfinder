@@ -5,7 +5,6 @@ import * as colors from '../styles/colors';
 
 export default ({ rowData, setSelectedVenue }) => {
   const { name, address, trendingNumber, travelTime } = rowData;
-  console.log(setSelectedVenue);
   return (
     <TouchableOpacity onPress={() => setSelectedVenue(rowData)}>
       <View style={styles.listItemContainer}>

@@ -14,23 +14,27 @@ export default class Map extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      selectedVenue: null
+      selectedVenue: null,
+      venues: []
     }
 
     this.setSelectedVenue = this.setSelectedVenue.bind(this)
     this.closeDetails = this.closeDetails.bind(this)
   }
 
+  // loads mock data
   componentWillMount() {
     this.setState({ venues: mockdata.results })
   }
 
+  // function to select a venue, pass to map markers and ResultsList
   setSelectedVenue(venue) {
     this.setState({
       selectedVenue: venue
     })
   }
 
+  // clear out selected venue, return to results list
   closeDetails() {
     this.setState({
       selectedVenue: null
@@ -48,16 +52,20 @@ export default class Map extends Component {
             latitudeDelta: mockdata.origin.latitudeDelta,
             longitudeDelta: mockdata.origin.longitudeDelta
           }}
-          onPress={this.handlePress}
         >
-          {this.state && this.state.venues.length > 0 ? this.state.venues.map((venue, i) => {
+
+          {this.state.venues.map((venue, i) => {
+            // create markers & pass setSelectedVenue function
             return (
               <Marker {...venue} key={i} onPress={() => this.setSelectedVenue(venue)}>
                 <View style={styles.marker} />
               </Marker>
             )
-          }) : null }
+          })}
+
         </MapView>
+
+        { /* check if there's any venues to display, if so generate list of results */}
         { this.state.venues.length > 0 && !this.state.selectedVenue &&
           <View style={styles.container}>
             <ResultsList
@@ -65,6 +73,8 @@ export default class Map extends Component {
               results={this.state.venues} />
           </View>
         }
+
+        { /* check details for a specific venue if it has been selected */ }
         { this.state.selectedVenue &&
           <View style={styles.container}>
             <VenueDetails
@@ -72,6 +82,7 @@ export default class Map extends Component {
               closeDetails={this.closeDetails} />
           </View>
         }
+
       </View>
     )
   }
@@ -94,4 +105,4 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#fff'
   }
-})
+});

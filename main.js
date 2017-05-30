@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
   search: {
-    flex: 1,
+    flex: 1, // needed for IOS text to center vertically
     fontSize: 14,
     color: colors.WHITE
   },
