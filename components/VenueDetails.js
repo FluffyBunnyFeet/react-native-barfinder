@@ -11,7 +11,7 @@ export default ({ venue, closeDetails }) => (
     <View style={styles.headingContainer}>
       <View style={styles.headingRow}>
         <View>
-          <Image source={require('./../Images/Beer.png')} style={styles.iconImage} />
+          <Image source={require('./../assets/images/Beer.png')} style={styles.iconImage} />
         </View>
         <View style={styles.headerMain}>
           <Text>{venue.name}</Text>

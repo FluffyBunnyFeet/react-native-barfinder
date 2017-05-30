@@ -8,7 +8,7 @@ export default ({ rowData, setSelectedVenue }) => {
   return (
     <TouchableOpacity onPress={() => setSelectedVenue(rowData)}>
       <View style={styles.listItemContainer}>
-        <Image source={require('./../Images/Beer.png')} style={styles.iconImage} />
+        <Image source={require('./../assets/images/Beer.png')} style={styles.iconImage} />
         <View style={styles.mainContent}>
           <Text>{name}</Text>
           <Text style={styles.address}>{address}</Text>
@@ -16,7 +16,7 @@ export default ({ rowData, setSelectedVenue }) => {
         </View>
         <View style={styles.travel}>
           <Text style={styles.travelText}>{travelTime}</Text>
-          <Image source={require('./../Images/glass-outline.png')} style={styles.smallIcon} />
+          <Image source={require('./../assets/images/glass-outline.png')} style={styles.smallIcon} />
         </View>
       </View>
     </TouchableOpacity>
