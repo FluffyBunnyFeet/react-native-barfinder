@@ -31,10 +31,10 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', marginBottom: 15}}> 
-          <Image source={require('./Images/Beer.png')} style={styles.mainIcon}/>
-          <Image source={require('./Images/Wine.png')} style={styles.mainIcon}/>
-          <Image source={require('./Images/Martini.png')} style={styles.mainIcon}/>
+        <View style={styles.row}> 
+          <Image source={require('./assets/images/Beer.png')} style={styles.mainIcon}/>
+          <Image source={require('./assets/images/Wine.png')} style={styles.mainIcon}/>
+          <Image source={require('./assets/images/Martini.png')} style={styles.mainIcon}/>
         </View>
 
         <Text style={styles.welcome}>Begin Your Adventure</Text>
@@ -47,10 +47,10 @@ class HomeScreen extends React.Component {
               onChange={(text) => this.setState({ searchString: text})} 
             />
           </View>
+
           <TouchableOpacity
             onPress={() => {
-              console.log(this.state)
-              return navigate('Articles', { searchString: this.state.searchString })
+              return navigate('MapScreen', { searchString: this.state.searchString })
             }}
             style={{flex: 1, alignItems: 'center', padding: 5}}
           >
@@ -71,6 +71,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.PRIMARY_PURPLE,
     padding: 20
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 15
   },
   mainIcon: {
     height: 80,
@@ -108,7 +112,6 @@ const styles = StyleSheet.create({
 
 const Routes = StackNavigator({
   Home: { screen: HomeScreen },
-  Articles: { screen: ArticlesScreen },
   Map: { screen: MapScreen }
 }, {
   headerMode: 'none'
