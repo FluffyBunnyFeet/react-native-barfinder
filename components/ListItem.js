@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
 
 import * as colors from '../styles/colors';
 
@@ -9,7 +9,7 @@ export default ({ rowData, setSelectedVenue }) => {
   return (
     <TouchableOpacity onPress={() => setSelectedVenue(rowData)}>
       <View style={styles.listItemContainer}>
-        <View style={styles.iconImage} />
+        <Image source={require('./../Images/Beer.png')} style={styles.iconImage} />
         <View style={styles.mainContent}>
           <Text>{name}</Text>
           <Text style={styles.address}>{address}</Text>
@@ -17,7 +17,7 @@ export default ({ rowData, setSelectedVenue }) => {
         </View>
         <View style={styles.travel}>
           <Text style={styles.travelText}>{travelTime}</Text>
-          <View style={styles.smallIcon} />
+          <Image source={require('./../Images/glass-outline.png')} style={styles.smallIcon} />
         </View>
       </View>
     </TouchableOpacity>
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   iconImage: {
     height: 55,
     width: 45,
-    backgroundColor: colors.GREEN,
     marginRight: 15
   },
   address: {
@@ -48,9 +47,8 @@ const styles = StyleSheet.create({
     color: '#777'
   },
   smallIcon: {
-    width: 18,
+    width: 17,
     height: 27,
-    backgroundColor: colors.GOLD,
     marginTop: 3
   },
   mainContent: {

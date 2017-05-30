@@ -51,7 +51,7 @@
       "address": "85 MKE Street",
       "travelTime": "7 min",
       "trendingNumber": "1",
-      "tagLine": "The Best Tagline",
+      "tagLine": "lorem ipsum",
       "image": "",
       "followers": "1",
       "testimonial": {
@@ -69,7 +69,7 @@
       "address": "95 Boomoos",
       "travelTime": "1 min",
       "trendingNumber": "9",
-      "tagLine": "",
+      "tagLine": "lorem ipsum",
       "image": "",
       "followers": "",
       "testimonial": {
@@ -87,7 +87,7 @@
       "address": "123 East St",
       "travelTime": "6 min",
       "trendingNumber": "99",
-      "tagLine": "",
+      "tagLine": "lorem ipsum",
       "image": "",
       "followers": "",
       "testimonial": {

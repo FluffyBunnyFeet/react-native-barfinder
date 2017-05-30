@@ -8,7 +8,7 @@ export default ({ venue, closeDetails }) => (
     <View style={styles.headingContainer}>
       <View style={styles.headingRow}>
         <View>
-          <Image style={styles.iconImage} />
+          <Image source={require('./../Images/Beer.png')} style={styles.iconImage} />
         </View>
         <View style={styles.headerMain}>
           <Text>{venue.name}</Text>
@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
   iconImage: {
     height: 50,
     width: 40,
-    backgroundColor: colors.GREEN,
     marginRight: 15
   },
   venueAddress: {
