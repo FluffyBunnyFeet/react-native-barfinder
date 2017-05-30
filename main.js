@@ -42,6 +42,7 @@ class HomeScreen extends React.Component {
         <View style={{flexDirection: 'row'}}>
           <View style={styles.searchWrap}>
             <TextInput style={styles.search}
+              underlineColorAndroid='transparent'
               placeholder="Search for beer, wine, or cocktail"
               placeholderTextColor="#f7f7f7"
               onChange={(text) => this.setState({ searchString: text})}

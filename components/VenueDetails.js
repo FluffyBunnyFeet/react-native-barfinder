@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Button } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Button, ScrollView } from 'react-native';
 
 import * as colors from '../styles/colors';
 
 export default ({ venue, closeDetails }) => (
-  <View style={styles.mainContainer}>
+  <ScrollView style={styles.mainContainer}>
+    <Button
+      title='Go Back'
+      onPress={closeDetails} />
     <View style={styles.headingContainer}>
       <View style={styles.headingRow}>
         <View>
@@ -25,10 +28,7 @@ export default ({ venue, closeDetails }) => (
       </View>
     </View>
     <View style={styles.mockImage} />
-    <Button
-      title='Go Back'
-      onPress={closeDetails} />
-  </View>
+  </ScrollView>
 );
 
 const styles = StyleSheet.create({
