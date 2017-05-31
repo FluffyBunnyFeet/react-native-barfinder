@@ -48,7 +48,7 @@ class ArticlesScreen extends React.Component {
     const { hasFetched, dataSource } = this.state;
     return (
       <View>
-        {hasFetched ?
+        { hasFetched ?
           <ListView
             dataSource={dataSource}
             renderRow={(rowData) => <Text style={listStyles.text}>{rowData.title}</Text>}
