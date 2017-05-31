@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ListView, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { ListView } from 'react-native';
 import ListItem from './ListItem';
-import * as colors from '../styles/colors';
 
 class ResultsList extends Component {
   constructor (props) {

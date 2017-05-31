@@ -15,29 +15,18 @@ export default class Map extends Component {
     super(props)
     this.state = {
       selectedVenue: null,
-      venues: []
+      markers: []
     }
 
     this.setSelectedVenue = this.setSelectedVenue.bind(this)
     this.closeDetails = this.closeDetails.bind(this)
-    this.renderMarkers = this.renderMarkers.bind(this)
   }
 
   // loads mock data
   componentWillMount() {
-    this.setState({ venues: mockdata.results })
+    this.setState({ markers: mockdata.results })
   }
 
-  renderMarkers() {
-    // create markers & pass setSelectedVenue function
-    return this.state.venues.map((venue, i) => {
-      return (
-        <Marker {...venue} key={i} onPress={() => this.setSelectedVenue(venue)}>
-          <View style={styles.marker} />
-        </Marker>
-      )
-    })
-  }
   // function to select a venue, pass to map markers and ResultsList
   setSelectedVenue(venue) {
     this.setState({
@@ -65,16 +54,23 @@ export default class Map extends Component {
           }}
         >
 
-          {this.renderMarkers()}
+          {this.state.markers.map((venue, i) => {
+            // create markers & pass setSelectedVenue function
+            return (
+              <Marker {...venue} key={i} onPress={() => this.setSelectedVenue(venue)}>
+                <View style={styles.marker} />
+              </Marker>
+            )
+          })}
 
         </MapView>
 
-        { /* check if there's any venues to display, if so generate list of results */}
-        { this.state.venues.length > 0 && !this.state.selectedVenue &&
+        { /* check if there's any markers to display, if so generate list of results */}
+        { this.state.markers.length > 0 && !this.state.selectedVenue &&
           <View style={styles.container}>
             <ResultsList
               setSelectedVenue={this.setSelectedVenue}
-              results={this.state.venues} />
+              results={this.state.markers} />
           </View>
         }
 
