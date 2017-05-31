@@ -21,7 +21,7 @@ class Loader extends React.Component {
 }
 
 class ArticlesScreen extends React.Component {
-  static navigationOptions = { //eslint-disable-line
+  static navigationOptions = {
     title: 'Articles',
   };
 

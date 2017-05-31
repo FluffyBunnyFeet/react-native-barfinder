@@ -22,7 +22,7 @@ export default class Map extends Component {
 
     this.state = {
       selectedVenue: null,
-      venues: []
+      markers: []
     }
 
     this.setSelectedVenue = this.setSelectedVenue.bind(this)
@@ -31,7 +31,7 @@ export default class Map extends Component {
 
   // loads mock data
   componentWillMount() {
-    this.setState({ venues: mockdata.results })
+    this.setState({ markers: mockdata.results })
   }
 
   // function to select a venue, pass to map markers and ResultsList
@@ -68,7 +68,7 @@ export default class Map extends Component {
           }}
         >
 
-          {this.state.venues.map((venue, i) => {
+          {this.state.markers.map((venue, i) => {
             // create markers & pass setSelectedVenue function
             return (
               <Marker {...venue} key={i} onPress={() => this.setSelectedVenue(venue)}>
@@ -79,12 +79,12 @@ export default class Map extends Component {
 
         </MapView>
 
-        { /* check if there's any venues to display, if so generate list of results */}
-        { this.state.venues.length > 0 && !this.state.selectedVenue &&
+        { /* check if there's any markers to display, if so generate list of results */}
+        { this.state.markers.length > 0 && !this.state.selectedVenue &&
           <View style={styles.container}>
             <ResultsList
               setSelectedVenue={this.setSelectedVenue}
-              results={this.state.venues} />
+              results={this.state.markers} />
           </View>
         }
 
