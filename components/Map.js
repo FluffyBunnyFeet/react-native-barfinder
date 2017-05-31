@@ -8,7 +8,7 @@ import BackBar from './BackBar'
 
 import mockdata from '../mock/mockdata.json'
 
-const backAction = NavigationActions.back();
+const backAction = NavigationActions.back()
 
 export default class Map extends Component {
   static navigationOptions = {

@@ -9,25 +9,30 @@ export default ({ venue, closeDetails }) => (
       title='Close'
       onPress={closeDetails}
       color={colors.PRIMARY_PURPLE} />
+
     <View style={styles.headingContainer}>
       <View style={styles.headingRow}>
         <View>
           <Image source={require('./../assets/images/Beer.png')} style={styles.iconImage} />
         </View>
+
         <View style={styles.headerMain}>
           <Text>{venue.name}</Text>
           <Text style={styles.venueAddress}>{venue.address}</Text>
         </View>
+
         <TouchableOpacity>
           <View style={styles.directionsBtn}>
             <Text style={styles.directionsText}>Directions</Text>
           </View>
         </TouchableOpacity>
       </View>
+
       <View>
         <Text style={styles.tagLine}>{venue.tagLine}</Text>
       </View>
     </View>
+
     <Image source={venueImage} />
   </ScrollView>
 )
