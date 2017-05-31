@@ -22,13 +22,20 @@ class HomeScreen extends React.Component {
 
   constructor(props){
     super(props)
+
+    this.clickHandler = this.clickHandler.bind(this)
+
     this.state = {
       searchString: ''
     }
   }
 
+  clickHandler() {
+    const { navigate } = this.props.navigation
+    return navigate('Map', { searchString: this.state.searchString })
+  }
+
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <View style={styles.row}>
@@ -50,12 +57,10 @@ class HomeScreen extends React.Component {
           </View>
 
           <TouchableOpacity
-            onPress={() => {
-              return navigate('MapScreen', { searchString: this.state.searchString })
-            }}
+            onPress={this.clickHandler}
             style={{flex: 1, alignItems: 'center', padding: 5}}
           >
-            <Image source={require('./Images/Search.png')} style={{ height: 30, width: 30, marginTop: -5}}/>
+            <Image source={require('./assets/images/Search.png')} style={{ height: 30, width: 30, marginTop: -5}}/>
           </TouchableOpacity>
         </View>
       </View>
