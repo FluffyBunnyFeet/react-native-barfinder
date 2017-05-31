@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
+import {NavigationActions} from 'react-navigation'
 import MapView, { Marker } from 'react-native-maps'
 import ResultsList from './ResultsList'
 import VenueDetails from './VenueDetails'
+import BackBar from './BackBar'
 
 import mockdata from '../mock/mockdata.json'
+
+const backAction = NavigationActions.back();
 
 export default class Map extends Component {
   static navigationOptions = {
@@ -13,6 +17,9 @@ export default class Map extends Component {
 
   constructor (props) {
     super(props)
+
+    this.goHome = this.goHome.bind(this);
+
     this.state = {
       selectedVenue: null,
       venues: []
@@ -41,9 +48,16 @@ export default class Map extends Component {
     })
   }
 
+  goHome() {
+    this.closeDetails()
+    this.props.navigation.dispatch(backAction)
+  }
+
   render () {
     return (
       <View style={styles.container}>
+        <BackBar navigate={ this.goHome } />
+
         <MapView
           style={styles.container}
           initialRegion={{

@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Button, ScrollView } from 'react-native';
-
+import venueImage from './../assets/images/venue-image.png';
 import * as colors from '../styles/colors';
 
 export default ({ venue, closeDetails }) => (
   <ScrollView style={styles.mainContainer}>
     <Button
-      title='Go Back'
-      onPress={closeDetails} />
+      title='Close'
+      onPress={closeDetails}
+      color={colors.PRIMARY_PURPLE} />
     <View style={styles.headingContainer}>
       <View style={styles.headingRow}>
         <View>
@@ -27,7 +28,7 @@ export default ({ venue, closeDetails }) => (
         <Text style={styles.tagLine}>{venue.tagLine}</Text>
       </View>
     </View>
-    <View style={styles.mockImage} />
+    <Image source={venueImage} />
   </ScrollView>
 );
 
@@ -70,9 +71,5 @@ const styles = StyleSheet.create({
   tagLine: {
     color: '#666',
     fontSize: 12
-  },
-  mockImage: {
-    height: 185,
-    backgroundColor: colors.GOLD
   }
 });
