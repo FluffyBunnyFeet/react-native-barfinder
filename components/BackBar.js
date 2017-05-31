@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Button, ScrollView } from 'react-native';
-import venueImage from './../assets/images/back-arrow.png';
-import * as colors from '../styles/colors';
+import React from 'react'
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import venueImage from './../assets/images/back-arrow.png'
+import * as colors from '../styles/colors'
 
 export default ({ navigate }) => (
   <View style={styles.container}>
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.PRIMARY_PURPLE,
     flexDirection: 'row',
     height: 60,
-    paddingTop: 20, 
+    paddingTop: 20,
     position: 'absolute',
     top: 0,
     left: 0,

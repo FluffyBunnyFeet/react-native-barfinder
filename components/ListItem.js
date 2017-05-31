@@ -1,10 +1,10 @@
-import React from 'react';
-import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
+import React from 'react'
+import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native'
 
-import * as colors from '../styles/colors';
+import * as colors from '../styles/colors'
 
 export default ({ rowData, setSelectedVenue }) => {
-  const { name, address, trendingNumber, travelTime } = rowData;
+  const { name, address, trendingNumber, travelTime } = rowData
   return (
     <TouchableOpacity onPress={() => setSelectedVenue(rowData)}>
       <View style={styles.listItemContainer}>
@@ -20,8 +20,8 @@ export default ({ rowData, setSelectedVenue }) => {
         </View>
       </View>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   listItemContainer: {
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   travelText: {
     color: colors.PRIMARY_PURPLE
   }
-});
+})

@@ -15,26 +15,27 @@ const makeFetch = (url, options) => fetch(url, options)
   .then(parseJSON)
 
 class Loader extends React.Component {
-  render(){
+  render() {
     return (<Text>Loading...</Text>);
   }
 }
 
 class ArticlesScreen extends React.Component {
-  static navigationOptions = {
+  static navigationOptions = { //eslint-disable-line
     title: 'Articles',
   };
 
-    constructor(props) {
-      super(props)
-      this.state = {
-        hasFetched: false,
-        dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-      };
-    }
-  componentDidMount(){
+  constructor(props) {
+    super(props)
+    this.state = {
+      hasFetched: false,
+      dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    };
+  }
+
+  componentDidMount() {
     makeFetch('https://jsonplaceholder.typicode.com/posts').then((data) => {
-      this.setState(()=> {
+      this.setState(() => {
         return {
           hasFetched: true,
           dataSource: this.state.dataSource.cloneWithRows(data)
@@ -42,17 +43,18 @@ class ArticlesScreen extends React.Component {
       })
     })
   }
+
   render() {
     const { hasFetched, dataSource } = this.state;
     return (
       <View>
         {hasFetched ?
           <ListView
-              dataSource={dataSource}
-              renderRow={(rowData) => <Text style={listStyles.text}>{rowData.title}</Text>}
-              renderSeparator={(sectionId, rowId) => <View key={rowId} style={listStyles.separator} />}
-            />
-            : <Loader />
+            dataSource={dataSource}
+            renderRow={(rowData) => <Text style={listStyles.text}>{rowData.title}</Text>}
+            renderSeparator={(sectionId, rowId) => <View key={rowId} style={listStyles.separator} />}
+          />
+          : <Loader />
         }
       </View>
     );

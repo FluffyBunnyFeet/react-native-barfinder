@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Button, ScrollView } from 'react-native';
-import venueImage from './../assets/images/venue-image.png';
-import * as colors from '../styles/colors';
+import React from 'react'
+import { View, Text, Image, TouchableOpacity, StyleSheet, Button, ScrollView } from 'react-native'
+import venueImage from './../assets/images/venue-image.png'
+import * as colors from '../styles/colors'
 
 export default ({ venue, closeDetails }) => (
   <ScrollView style={styles.mainContainer}>
@@ -30,7 +30,7 @@ export default ({ venue, closeDetails }) => (
     </View>
     <Image source={venueImage} />
   </ScrollView>
-);
+)
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
     color: '#666',
     fontSize: 12
   }
-});
+})

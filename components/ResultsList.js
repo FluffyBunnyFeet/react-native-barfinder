@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import { View, Text, ListView, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import ListItem from './ListItem';
-import * as colors from '../styles/colors';
+import React, { Component } from 'react'
+import { ListView } from 'react-native'
+import ListItem from './ListItem'
 
 class ResultsList extends Component {
   constructor (props) {
-    super(props);
+    super(props)
 
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
     this.state = {
       dataSource: ds.cloneWithRows(this.props.results)
-    };
+    }
   }
 
   renderRow (rowData) {
@@ -18,7 +17,7 @@ class ResultsList extends Component {
       <ListItem
         setSelectedVenue={this.props.setSelectedVenue}
         rowData={rowData} />
-    );
+    )
   }
 
   render () {
@@ -26,8 +25,8 @@ class ResultsList extends Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={rowData => this.renderRow(rowData)} />
-    );
+    )
   }
 }
 
-export default ResultsList;
+export default ResultsList
